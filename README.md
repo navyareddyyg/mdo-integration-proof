@@ -55,5 +55,6 @@ Verify only the integrated implementation:
 
 Generated reports are written under `proof/` and are ignored by Git.
 
-See [`RESULTS.md`](RESULTS.md) for the recorded controlled-test evidence and
-the limits of the conclusion.
+See the shareable [`MDO-COMPARISON-PROOF.md`](MDO-COMPARISON-PROOF.md) for the
+complete controlled A/B evidence. [`RESULTS.md`](RESULTS.md) contains the
+shorter result summary.
