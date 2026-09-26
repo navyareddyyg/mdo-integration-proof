@@ -9,7 +9,11 @@ $root = $PSScriptRoot
 $fixtures = Join-Path $root 'fixtures'
 $proofDirectory = Join-Path $root 'proof'
 $output = Join-Path $proofDirectory 'integrated.json'
-$projectPath = [IO.Path]::GetFullPath((Join-Path $root $ScannerProject))
+$projectPath = if ([IO.Path]::IsPathRooted($ScannerProject)) {
+    [IO.Path]::GetFullPath($ScannerProject)
+} else {
+    [IO.Path]::GetFullPath((Join-Path $root $ScannerProject))
+}
 
 if (-not (Test-Path -LiteralPath $projectPath -PathType Leaf)) {
     throw "Scanner project was not found: $projectPath"

@@ -22,7 +22,11 @@ function Invoke-Scanner {
         [string] $Output
     )
 
-    $projectPath = [IO.Path]::GetFullPath((Join-Path $root $Project))
+    $projectPath = if ([IO.Path]::IsPathRooted($Project)) {
+        [IO.Path]::GetFullPath($Project)
+    } else {
+        [IO.Path]::GetFullPath((Join-Path $root $Project))
+    }
     if (-not (Test-Path -LiteralPath $projectPath -PathType Leaf)) {
         throw "Scanner project was not found: $projectPath"
     }
